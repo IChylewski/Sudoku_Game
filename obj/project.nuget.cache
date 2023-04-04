@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "6VoOwJkRvKcV20TFhyzWX1qbmRHtDFkJg3POOoZk1bt4qqFXM535jrmvmBrzbgqLNSOKW/lWMlffcheDZwodcg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\IrekChylewski\\OneDrive - Forrit\\Desktop\\Personal\\Coding\\Sudoku\\Sudoku.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\IrekChylewski\\.nuget\\packages\\stub.system.data.sqlite.core.netstandard\\1.0.115.5\\stub.system.data.sqlite.core.netstandard.1.0.115.5.nupkg.sha512",
+    "C:\\Users\\IrekChylewski\\.nuget\\packages\\system.data.sqlite.core\\1.0.115.5\\system.data.sqlite.core.1.0.115.5.nupkg.sha512"
+  ],
+  "logs": []
+}
