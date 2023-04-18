@@ -8,10 +8,100 @@
     ".NETCoreApp,Version=v6.0": {
       "Sudoku/1.0.0": {
         "dependencies": {
+          "Google.OrTools": "9.6.2534",
           "System.Data.SQLite.Core": "1.0.115.5"
         },
         "runtime": {
           "Sudoku.dll": {}
+        }
+      },
+      "Google.OrTools/9.6.2534": {
+        "dependencies": {
+          "Google.OrTools.runtime.linux-arm64": "9.6.2534",
+          "Google.OrTools.runtime.linux-x64": "9.6.2534",
+          "Google.OrTools.runtime.osx-arm64": "9.6.2534",
+          "Google.OrTools.runtime.osx-x64": "9.6.2534",
+          "Google.OrTools.runtime.win-x64": "9.6.2534",
+          "Google.Protobuf": "3.21.12"
+        },
+        "runtime": {
+          "lib/net6.0/Google.OrTools.dll": {
+            "assemblyVersion": "9.6.2534.0",
+            "fileVersion": "9.6.2534.0"
+          }
+        }
+      },
+      "Google.OrTools.runtime.linux-arm64/9.6.2534": {
+        "runtimeTargets": {
+          "runtimes/linux-arm64/native/google-ortools-native.so": {
+            "rid": "linux-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-arm64/native/libortools.so.9": {
+            "rid": "linux-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Google.OrTools.runtime.linux-x64/9.6.2534": {
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/google-ortools-native.so": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-x64/native/libortools.so.9": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Google.OrTools.runtime.osx-arm64/9.6.2534": {
+        "runtimeTargets": {
+          "runtimes/osx-arm64/native/google-ortools-native.dylib": {
+            "rid": "osx-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx-arm64/native/libortools.9.dylib": {
+            "rid": "osx-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Google.OrTools.runtime.osx-x64/9.6.2534": {
+        "runtimeTargets": {
+          "runtimes/osx-x64/native/google-ortools-native.dylib": {
+            "rid": "osx-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx-x64/native/libortools.9.dylib": {
+            "rid": "osx-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Google.OrTools.runtime.win-x64/9.6.2534": {
+        "runtimeTargets": {
+          "runtimes/win-x64/native/google-ortools-native.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Google.Protobuf/3.21.12": {
+        "runtime": {
+          "lib/net5.0/Google.Protobuf.dll": {
+            "assemblyVersion": "3.21.12.0",
+            "fileVersion": "3.21.12.0"
+          }
         }
       },
       "Stub.System.Data.SQLite.Core.NetStandard/1.0.115.5": {
@@ -56,6 +146,55 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Google.OrTools/9.6.2534": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-DUSUpchk1jq0HYFYVB9V+VnefEXLKTookavlu/METr8stXZgtmIt+V6gyIL/CEXGqQ1FfOvE1af5Gvbm4eMgaQ==",
+      "path": "google.ortools/9.6.2534",
+      "hashPath": "google.ortools.9.6.2534.nupkg.sha512"
+    },
+    "Google.OrTools.runtime.linux-arm64/9.6.2534": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ZM5kOOiiyVYCx7WF0WNQvCKvvEDo/CzUHRf0nfA5dGRRS3G0glRItAq8Qblnm4//uhsge2xRBpnQHtu1V/KT5w==",
+      "path": "google.ortools.runtime.linux-arm64/9.6.2534",
+      "hashPath": "google.ortools.runtime.linux-arm64.9.6.2534.nupkg.sha512"
+    },
+    "Google.OrTools.runtime.linux-x64/9.6.2534": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5uvlaQQEJPBuZ04LsYomvybxf8OwI3LYr2BunxD0swtYDuGisNCkGdXre0tOr/KW0aO49+UpMoUagJX5zXQMOg==",
+      "path": "google.ortools.runtime.linux-x64/9.6.2534",
+      "hashPath": "google.ortools.runtime.linux-x64.9.6.2534.nupkg.sha512"
+    },
+    "Google.OrTools.runtime.osx-arm64/9.6.2534": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ytFnPZVEJu68FeYWUQnmtkOvtTH2Odg3CtjUfjVi58C4OajOenG5KW3A6PNrZTwpLkG1AgqgmeU8xtvgFEAfuQ==",
+      "path": "google.ortools.runtime.osx-arm64/9.6.2534",
+      "hashPath": "google.ortools.runtime.osx-arm64.9.6.2534.nupkg.sha512"
+    },
+    "Google.OrTools.runtime.osx-x64/9.6.2534": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-227WoUqgaRKtXbc7kJWygjezUkIRDGphO8nWS8UqMceyBpT4CD75SfFd/MB0w0EonUkge/S0lJEVVdSUM73WjA==",
+      "path": "google.ortools.runtime.osx-x64/9.6.2534",
+      "hashPath": "google.ortools.runtime.osx-x64.9.6.2534.nupkg.sha512"
+    },
+    "Google.OrTools.runtime.win-x64/9.6.2534": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Rb4lmvzsMnTfi2PlwPH7fZMK0I6WOc8aDcrARSkssNMyabRkkCUzOSDldBLA0KMOdtnd6rp4xb3VeJuI0RHS2A==",
+      "path": "google.ortools.runtime.win-x64/9.6.2534",
+      "hashPath": "google.ortools.runtime.win-x64.9.6.2534.nupkg.sha512"
+    },
+    "Google.Protobuf/3.21.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1TXWxQy0PDDM1NC/LojlX4YVh7NhOvvyriCfERzeUVTp0XNXv8mo/AyWxDYCvMQ9xRZHUVdWoE4/B8ridP8Btg==",
+      "path": "google.protobuf/3.21.12",
+      "hashPath": "google.protobuf.3.21.12.nupkg.sha512"
     },
     "Stub.System.Data.SQLite.Core.NetStandard/1.0.115.5": {
       "type": "package",

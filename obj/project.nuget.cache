@@ -1,9 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "6VoOwJkRvKcV20TFhyzWX1qbmRHtDFkJg3POOoZk1bt4qqFXM535jrmvmBrzbgqLNSOKW/lWMlffcheDZwodcg==",
+  "dgSpecHash": "6DSYnY4XPazCEkfHsY8jzXpwsB8n2XS77Msq58LBQSoGYaBFvazih4qS6syBJfkZOhzdgil0D7igmLuwrOPF3w==",
   "success": true,
   "projectFilePath": "C:\\Users\\IrekChylewski\\OneDrive - Forrit\\Desktop\\Personal\\Coding\\Sudoku\\Sudoku.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\IrekChylewski\\.nuget\\packages\\google.ortools\\9.6.2534\\google.ortools.9.6.2534.nupkg.sha512",
+    "C:\\Users\\IrekChylewski\\.nuget\\packages\\google.ortools.runtime.linux-arm64\\9.6.2534\\google.ortools.runtime.linux-arm64.9.6.2534.nupkg.sha512",
+    "C:\\Users\\IrekChylewski\\.nuget\\packages\\google.ortools.runtime.linux-x64\\9.6.2534\\google.ortools.runtime.linux-x64.9.6.2534.nupkg.sha512",
+    "C:\\Users\\IrekChylewski\\.nuget\\packages\\google.ortools.runtime.osx-arm64\\9.6.2534\\google.ortools.runtime.osx-arm64.9.6.2534.nupkg.sha512",
+    "C:\\Users\\IrekChylewski\\.nuget\\packages\\google.ortools.runtime.osx-x64\\9.6.2534\\google.ortools.runtime.osx-x64.9.6.2534.nupkg.sha512",
+    "C:\\Users\\IrekChylewski\\.nuget\\packages\\google.ortools.runtime.win-x64\\9.6.2534\\google.ortools.runtime.win-x64.9.6.2534.nupkg.sha512",
+    "C:\\Users\\IrekChylewski\\.nuget\\packages\\google.protobuf\\3.21.12\\google.protobuf.3.21.12.nupkg.sha512",
     "C:\\Users\\IrekChylewski\\.nuget\\packages\\stub.system.data.sqlite.core.netstandard\\1.0.115.5\\stub.system.data.sqlite.core.netstandard.1.0.115.5.nupkg.sha512",
     "C:\\Users\\IrekChylewski\\.nuget\\packages\\system.data.sqlite.core\\1.0.115.5\\system.data.sqlite.core.1.0.115.5.nupkg.sha512"
   ],

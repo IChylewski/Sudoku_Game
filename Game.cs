@@ -2,8 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.SQLite;
 using System.Data.SqlTypes;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Database = Sudoku.Database.Database;
@@ -16,20 +18,23 @@ namespace Sudoku
         {
             Console.CursorVisible = true;
             ConsoleKeyInfo key;
-            string firstField = Data.editableFields[0];
+            string firstField = Data.editableFields[0];        // Index of first field to focus when the game starts
             int currentFieldIndex = 0;
-            int[] firstFieldValue = Data.inputFields.First(x => x.Key == firstField).Value;
+            int[] firstFieldValue = Data.inputFields.First(x => x.Key == firstField).Value;   // Gets coordinates of the console cell of first editable field
             int[] newFieldValue;
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.SetCursorPosition(firstFieldValue[0], firstFieldValue[1]);
-            Timer.StartTimer();
-            TimeSpan startTime = DateTime.Now.TimeOfDay;
-            
+            Console.SetCursorPosition(firstFieldValue[0], firstFieldValue[1]);   // Sets console cursor position to first editable field
+            TimeSpan startTime = DateTime.Now.TimeOfDay;  // Stores time of the game start
 
+            int gameId = Database.Database.GetGames().Last().ID;
+
+            // Loop allows the console to display interactive grid, every iteration updates the values and enables functionality of the game
             while (true)
             {
                 key = Console.ReadKey();
                 string currentCoordinate;
+
+                // If Left or Right allow clicked the next editable field is found and the cursor's position gets updated
                 switch (key.Key)
                 {
                     case ConsoleKey.LeftArrow:
@@ -59,6 +64,7 @@ namespace Sudoku
                     case ConsoleKey.Escape:
                         ResetGame();
                         break;
+                    // When number entered, the player guess is updated and his move saved in the database so it can be replayed later
                     default:
                         {
                             switch(key.Key)
@@ -67,66 +73,76 @@ namespace Sudoku
                                     {
                                         currentCoordinate = Data.editableFields[currentFieldIndex];
                                         Data.playerGuesses[currentCoordinate] = 1;
+                                        Database.Database.AddPlayerMove(gameId, Data.userName, currentCoordinate, 1);
                                         break;
                                     }
                                 case ConsoleKey.D2:
                                     {
                                         currentCoordinate = Data.editableFields[currentFieldIndex];
                                         Data.playerGuesses[currentCoordinate] = 2;
+                                        Database.Database.AddPlayerMove(gameId, Data.userName, currentCoordinate, 2);
                                         break;
                                     }
                                 case ConsoleKey.D3:
                                     {
                                         currentCoordinate = Data.editableFields[currentFieldIndex];
                                         Data.playerGuesses[currentCoordinate] = 3;
+                                        Database.Database.AddPlayerMove(gameId, Data.userName, currentCoordinate, 3);
                                         break;
                                     }
                                 case ConsoleKey.D4:
                                     {
                                         currentCoordinate = Data.editableFields[currentFieldIndex];
                                         Data.playerGuesses[currentCoordinate] = 4;
+                                        Database.Database.AddPlayerMove(gameId, Data.userName, currentCoordinate, 4);
                                         break;
                                     }
                                 case ConsoleKey.D5:
                                     {
                                         currentCoordinate = Data.editableFields[currentFieldIndex];
                                         Data.playerGuesses[currentCoordinate] = 5;
+                                        Database.Database.AddPlayerMove(gameId, Data.userName, currentCoordinate, 5);
                                         break;
                                     }
                                 case ConsoleKey.D6:
                                     {
                                         currentCoordinate = Data.editableFields[currentFieldIndex];
                                         Data.playerGuesses[currentCoordinate] = 6;
+                                        Database.Database.AddPlayerMove(gameId, Data.userName, currentCoordinate, 6);
                                         break;
                                     }
                                 case ConsoleKey.D7:
                                     {
                                         currentCoordinate = Data.editableFields[currentFieldIndex];
                                         Data.playerGuesses[currentCoordinate] = 7;
+                                        Database.Database.AddPlayerMove(gameId, Data.userName, currentCoordinate, 7);
                                         break;
                                     }
                                 case ConsoleKey.D8:
                                     {
                                         currentCoordinate = Data.editableFields[currentFieldIndex];
                                         Data.playerGuesses[currentCoordinate] = 8;
+                                        Database.Database.AddPlayerMove(gameId, Data.userName, currentCoordinate, 8);
                                         break;
                                     }
                                 case ConsoleKey.D9:
                                     {
                                         currentCoordinate = Data.editableFields[currentFieldIndex];
                                         Data.playerGuesses[currentCoordinate] = 9;
+                                        Database.Database.AddPlayerMove(gameId, Data.userName, currentCoordinate, 9);
                                         break;
                                     }
                             }
 
+                            // When number entered the position of the cursor resets to the new number can be entered
+
                             newFieldValue = Data.inputFields.First(x => x.Key == Data.editableFields[currentFieldIndex]).Value;
                             Console.SetCursorPosition(newFieldValue[0], newFieldValue[1]);
 
-                            var test = Data.playerGuesses;
-
+                            // Every time the new number is entered this method checks if the solution provided by player matches the generated solution
+                            // If true the score is calculated saved in the database and message displayed
                             if (CheckIfSolved())
                             {
-                                Timer.StopTimer();
                                 TimeSpan endTime = DateTime.Now.TimeOfDay;
                                 double resultTime = (endTime - startTime).TotalSeconds;
                                 double addScore = 0;
@@ -138,26 +154,26 @@ namespace Sudoku
                                         addScore = 0;
                                         break;
                                     case "Medium":
-                                        addScore = 500;
+                                        addScore = 10000;
                                         break;
                                     case "Hard":
-                                        addScore = 1000;
+                                        addScore = 30000;
                                         break;
                                     default:
                                         addScore = 0;
                                         break;
                                 }
-
-                                double score = Math.Round(maxScore + addScore / resultTime);
+                                // Personal idea to calculate score
+                                double score = Math.Round((maxScore + addScore) / resultTime);
 
                                 if(Data.chosenLevel != "None")
                                 {
-                                    Database.Database.AddScore(Data.userName, score, Data.chosenLevel);
+                                    Database.Database.AddScore(Data.userName, gameId, score, Data.chosenLevel);
                                 }
                                 
 
                                 Console.SetCursorPosition(0, 25);
-                                Console.WriteLine($"You won in {Timer.GetTime()}");
+                                Console.WriteLine($"You won in {(endTime - startTime)}");
                                 Console.WriteLine("Please press enter to go back to menu");
                                 Console.ReadKey();
                                 ResetGame();
@@ -167,7 +183,7 @@ namespace Sudoku
                 }
             }
         }
-
+        // Simply compares the guesses list to the generated puzzle grid
         public static bool CheckIfSolved()
         {
             bool solved = true;
@@ -180,6 +196,7 @@ namespace Sudoku
             }
             return solved;
         }
+        // Resets game and data fields to the initial state
         public static void ResetGame()
         {
             Data.indexesToHide.Clear();
@@ -187,6 +204,26 @@ namespace Sudoku
             Data.numberFields.Clear();
             Data.editableFields.Clear();
             Menu.DisplayMenu();
+        }
+
+        // This method allows player to play "replay" of their game, it gets all player moves for the specific gameId and populates the grid move by move
+        public static void PlayReplay(int gameId)
+        {
+            List<PlayerMoveModel> moves = Database.Database.GetPlayerMoves(gameId);
+            Console.ForegroundColor = ConsoleColor.Blue;
+
+            foreach (var move in moves)
+            {
+                System.Threading.Thread.Sleep(1000);
+                int[] fieldValue = Data.inputFields.First(x => x.Key == move.EditableField).Value;
+                Console.SetCursorPosition(fieldValue[0], fieldValue[1]);
+                Console.Write(move.Value);
+            }
+
+            Console.SetCursorPosition(0, 25);
+            Console.WriteLine("Please press enter to go back to menu");
+            Console.ReadKey();
+            ResetGame();
         }
     }
 }

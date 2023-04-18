@@ -7,11 +7,14 @@ using System.Threading.Tasks;
 
 namespace Sudoku
 {
+    // This is helper class that holds the data that is accessible for the entire solution
+
     public static class Data
     {
-        public static string userName = "";
+        public static string userName = ""; 
         public static string chosenLevel = "";
-        public static Dictionary<string, int> numberFields = new Dictionary<string, int>();     //  Coordinates and number their contain
+        public static int[,] rawBoard = new int[9, 9];
+        public static Dictionary<string, int> numberFields = new Dictionary<string, int>();     //  Coordinates and number they contain
         public static Dictionary<string, int[]> inputFields = new Dictionary<string, int[]>()
         {
             {"A1", new int[] {5,2} },

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,16 +10,21 @@ namespace Sudoku
 {
     public static class SudokuGenerator
     {
+        // Generates valid sudoku board
         public static void GenerateSudoku()
         {
             Random rnd = new Random();
             int[,] board = new int[9, 9];
             int[] numbers = Enumerable.Range(1, 9).ToArray();
 
+            Database.Database.AddGame(Data.userName, DateTime.Now.ToString());
+            int gameId = Database.Database.GetGames().Last().ID;
+
             for (int i = 0; i < 9; i++)
             {
                 for (int j = 0; j < 9; j++)
                 {
+                    // returns all possible numbers that meet condition 
                     int[] possibleNumbers = numbers.Where(x => IsValid(board, i, j, x)).ToArray();
 
                     if (possibleNumbers.Length == 0)
@@ -32,28 +38,30 @@ namespace Sudoku
                     board[i, j] = possibleNumbers[randomIndex];
                 }
             }
+
+
             int counterX = 0;
             int counterY = 0;
             foreach (var item in Data.inputFields)
             {
-                
-
                 if(counterX == 9)
                 {
                     counterY += 1;
                     counterX = 0;
                 }
                 Data.numberFields.Add(item.Key, board[counterX, counterY]);
+                Database.Database.AddNumberField(gameId, item.Key, board[counterX, counterY]);
 
                 counterX += 1;
 
             }
-            var test = Data.numberFields;
+            Data.rawBoard = board;
+
         }
 
-        private static bool IsValid(int[,] board, int row, int col, int num)
+        // Checks if the number is valid for the specifc box, row and column.
+        public static bool IsValid(int[,] board, int row, int col, int num)
         {
-
             // Check if row or column contains number
             for (int i = 0; i < 9; i++)
             {
