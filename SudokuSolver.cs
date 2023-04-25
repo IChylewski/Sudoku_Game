@@ -89,8 +89,6 @@ namespace Sudoku
             // rows and columns
             for (int i = 0; i < 9; i++)
             {
-                //solver.Add((from j in Enumerable.Range(0, 9) select variables[i, j]).ToArray().AllDifferent());
-                //solver.Add((from j in Enumerable.Range(0, 9) select variables[j, i]).ToArray().AllDifferent());
                 IntVar[] row = new IntVar[9];
                 IntVar[] col = new IntVar[9];
                 for(int j = 0; j < 9; j++)
@@ -115,7 +113,6 @@ namespace Sudoku
                         }
                     }
                     solver.Add(box.AllDifferent());
-                    //solver.Add((from x in Enumerable.Range(i * 3, 3) from y in Enumerable.Range(j * 3, 3) select variables[x, y]).ToArray().AllDifferent());
 
                 }
             }
